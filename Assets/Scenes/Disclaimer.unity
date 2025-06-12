@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 44}
   m_SizeDelta: {x: 2700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890690846
@@ -609,8 +609,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 2900, y: 100}
+  m_AnchoredPosition: {x: 0, y: 20}
+  m_SizeDelta: {x: 3200, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450756123
 MonoBehaviour:
@@ -643,8 +643,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Create Your Frisk is not owned by Toby Fox. Selling this engine or its mods
-    is <color="#ff0000">illegal</color>.
+  m_Text: 'Create Your Frisk is not owned by Toby Fox.
+
+    We do not endorse the sale of mods or derivative content using CYF.'
 --- !u!222 &1450756124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -906,7 +907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: 126}
   m_SizeDelta: {x: 2800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007236154
