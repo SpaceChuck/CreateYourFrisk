@@ -19,7 +19,7 @@ public class GlobalControls : MonoBehaviour {
 
     public static IUndertaleInput input = new KeyboardInput();              // KeyboardInput singleton, registering any key press the Player does and handling them
     public static LuaInputBinding luaInput = new LuaInputBinding(input);    // Input Lua object, usable on the Lua side
-
+    
     public static string realName;      // Player's name in the overworld, given through the scene EnterName
     public static bool modDev;          // True if we entered the mod selection screen and not the overworld, false otherwise
     public static bool crate;           // True if CrateYourFrisk mode is active, false otherwise
@@ -38,8 +38,11 @@ public class GlobalControls : MonoBehaviour {
     public static Dictionary<string, GameState.TempMapData> TempGameMapData = new Dictionary<string, GameState.TempMapData>();  // Data used to save changes applied to maps the Player hasn't visited yet
 
     private static bool awakened;   // Used to only run Awake() once
+    
+    public Object TouchControls; // Crappy touch controls from the crappy ios port
 
-    public void Awake() {
+    public void Awake()
+    {
         if (awakened) return;
         // Create all singletons (classes that only have one instance across the entire app)
         StaticInits.Start();
@@ -59,20 +62,22 @@ public class GlobalControls : MonoBehaviour {
         ReloadCrate();
 
         // Check if safe mode has a stored preference that is a boolean
-        if (LuaScriptBinder.GetAlMighty(null, "CYFSafeMode")      != null
+        if (LuaScriptBinder.GetAlMighty(null, "CYFSafeMode") != null
          && LuaScriptBinder.GetAlMighty(null, "CYFSafeMode").Type == DataType.Boolean)
             ControlPanel.instance.Safe = LuaScriptBinder.GetAlMighty(null, "CYFSafeMode").Boolean;
 
         // Check if retro mode has a stored preference that is a boolean
-        if (LuaScriptBinder.GetAlMighty(null, "CYFRetroMode")      != null
+        if (LuaScriptBinder.GetAlMighty(null, "CYFRetroMode") != null
          && LuaScriptBinder.GetAlMighty(null, "CYFRetroMode").Type == DataType.Boolean)
             retroMode = LuaScriptBinder.GetAlMighty(null, "CYFRetroMode").Boolean;
 
         // Check if window scale has a stored preference that is a number
-        if (LuaScriptBinder.GetAlMighty(null, "CYFWindowScale")      != null
-         && LuaScriptBinder.GetAlMighty(null, "CYFWindowScale").Type == DataType.Number) {
-            ScreenResolution.windowScale = (int) System.Math.Max(LuaScriptBinder.GetAlMighty(null, "CYFWindowScale").Number, 1);
-            if (!ScreenResolution.hasInitialized) {
+        if (LuaScriptBinder.GetAlMighty(null, "CYFWindowScale") != null
+         && LuaScriptBinder.GetAlMighty(null, "CYFWindowScale").Type == DataType.Number)
+        {
+            ScreenResolution.windowScale = (int)System.Math.Max(LuaScriptBinder.GetAlMighty(null, "CYFWindowScale").Number, 1);
+            if (!ScreenResolution.hasInitialized)
+            {
                 Screen.SetResolution(640, 480, Screen.fullScreen, 0);
                 ScreenResolution scrRes = FindObjectOfType<ScreenResolution>();
                 if (scrRes) scrRes.Start();
@@ -82,6 +87,10 @@ public class GlobalControls : MonoBehaviour {
 
         // Start Discord RPC (also checks for an AlMightyGlobal within)
         DiscordControls.Start();
+
+        // Touch controls (crappy ios port)
+        TouchControls = Instantiate(Resources.Load("Prefabs/TouchControls"));
+        DontDestroyOnLoad(TouchControls);
 
         awakened = true;
     }

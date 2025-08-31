@@ -160,16 +160,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc5aa61b3446942acd3e628a7d73d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: $
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 320
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
 --- !u!1 &132697915
@@ -793,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c152f559704a98f488c1e63266ed7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2111465115}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -985,6 +984,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516848000}
   m_CullTransparentMesh: 0
+--- !u!21 &569594954
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &573913229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,10 +1705,11 @@ MonoBehaviour:
   mercyButton: {fileID: 1280180707}
   action: 0
   forcedAction: 4
+  arenaParent: {fileID: 0}
   psContainer: {fileID: 0}
   fightUI: {fileID: 0}
   monsterDialogues: []
-  monsterDialogueEnemyID: 
+  monsterDialogueEnemy: []
   playerOffsets:
   - {x: 16, y: 19}
   - {x: 16, y: 19}
@@ -1685,7 +1718,7 @@ MonoBehaviour:
   exp: 0
   gold: 0
   readyToNextLine: 
-  needOnDeath: 0
+  checkDeathCall: 0
   stateSwitched: 0
   battleDialogueStarted: 0
   UIStates:
@@ -3157,29 +3190,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac8dc980caea604a81186f096e200ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: 
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 0
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
   bubble: 0
   progress: 0
   autoSetLayer: 0
   needFontReset: 0
-  noAutoLineBreak: 0
   isMainTextObject: 0
-  noSelfAdvance: 0
   deleteWhenFinished: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
-  hasColorBeenSet: 0
-  hasAlphaBeenSet: 0
+  textColorSet: 0
+  textAlphaSet: 0
 --- !u!1 &1339420633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,7 +3743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c152f559704a98f488c1e63266ed7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 1585967853}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -3916,6 +3946,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7b8a91bf13f244b93c1a72a65984e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &1532133791
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1546366359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,18 +4239,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc5aa61b3446942acd3e628a7d73d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: $
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 320
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
+--- !u!21 &1585967853
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1642330544
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,6 +4359,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642330544}
   m_CullTransparentMesh: 0
+--- !u!21 &1669108269
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1670131342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5635,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105576919}
   m_CullTransparentMesh: 0
+--- !u!21 &2111465115
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default UI Material(Clone)
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2124894572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,26 +5765,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac8dc980caea604a81186f096e200ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterSound: 
+  letterAdjustShifts: []
+  fontVoice: 
   currentLine: 0
   _textMaxWidth: 0
   currentCharacter: 0
   currentReferenceCharacter: 0
-  nextMonsterDialogueOnce: 0
-  wasStated: 0
+  currentSkippable: 1
   columnShift: 265
   columnNumber: 2
-  blockSkip: 0
   skipNowIfBlocked: 0
   lateStartWaiting: 0
   bubble: 0
   progress: 0
   autoSetLayer: 0
   needFontReset: 0
-  noAutoLineBreak: 0
   isMainTextObject: 0
-  noSelfAdvance: 0
   deleteWhenFinished: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
-  hasColorBeenSet: 0
-  hasAlphaBeenSet: 0
+  textColorSet: 0
+  textAlphaSet: 0
