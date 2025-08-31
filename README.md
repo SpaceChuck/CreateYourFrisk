@@ -1,3 +1,13 @@
+# Create Your Frisk iOS Port
+An iOS port of Create Your Frisk. Might work on Android too. Thanks to [ereralp5kekadam](https://github.com/ereralp5kekadam) for ~~forcing me~~ kindly asking me to make this.
+
+## Building
+After building, add UIFileSharingEnabled and LSSupportsOpeningDocumentsInPlace to Info.plist on iOS.
+
+## Issues
+- Shaders are not supported
+- Probably more that I haven't found yet
+
 # Create Your Frisk - Lua moddable Undertale engine
 
 Welcome to the Git repository for **Create Your Frisk**, a fork of [**Unitale**](https://github.com/lvk/Unitale/) by lvk!
@@ -12,7 +22,7 @@ We also have a [**Discord server**](https://discord.gg/GFJ5277)! Feel free to ch
 
 ## Download
 
-To download the engine, go to [**the releases page**](https://github.com/RhenaudTheLukark/CreateYourFrisk/releases).
+To download the engine, go to [**the releases page**](https://github.com/SpaceChuck/CreateYourFrisk/releases).
 
 ***
 

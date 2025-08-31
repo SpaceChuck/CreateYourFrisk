@@ -1,0 +1,1 @@
+Put these in the Create Your Frisk folder in the Files app.
