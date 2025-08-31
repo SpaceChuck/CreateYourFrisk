@@ -2,9 +2,9 @@
 An iOS port of Create Your Frisk. Might work on Android too. Thanks to [ereralp5kekadam](https://github.com/ereralp5kekadam) for ~~forcing me~~ kindly asking me to make this.
 
 ## Building
-After building, add UIFileSharingEnabled and LSSupportsOpeningDocumentsInPlace to Info.plist on iOS.
+After building, add UIFileSharingEnabled and LSSupportsOpeningDocumentsInPlace to Info.plist.
 
-## Issues
+## Issues
 - Shaders are not supported
 - Probably more that I haven't found yet
 
