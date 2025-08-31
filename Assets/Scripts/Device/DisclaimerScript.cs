@@ -43,7 +43,7 @@ public class DisclaimerScript : MonoBehaviour {
             GlobalControls.modDev = false;
             SceneManager.LoadScene("Intro");
             Destroy(this);
-        } else if (GlobalControls.input.Confirm == ButtonState.PRESSED || Input.GetMouseButtonDown(0)) {
+        } else if (GlobalControls.input.Confirm == ButtonState.PRESSED || SimpleInput.GetMouseButtonDown(0)) {
             #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
                 Misc.RetargetWindow();
             #endif

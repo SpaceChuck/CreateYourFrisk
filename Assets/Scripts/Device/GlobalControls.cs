@@ -9,7 +9,7 @@ using MoonSharp.Interpreter;
 /// Controls that should be active on all screens. Pretty much a hack to allow people to reset. Now it's more useful.
 /// </summary>
 public class GlobalControls : MonoBehaviour {
-    public static string CYFversion       = "0.6.6";    // Current version of CYF displayed in the main menu and usable in scripts
+    public static string CYFversion = "0.6.6";    // Current version of CYF displayed in the main menu and usable in scripts
     public static string OverworldVersion = "0.6.6";    // Last version in which the overworld was changed, notifying any user with an old save to delete it
     public static int    LTSversion       = 3;          // LTS version, mainly used for CYF 0.6.6
     public static int    BetaVersion      = 0;          // Only used for beta versions
@@ -49,8 +49,13 @@ public class GlobalControls : MonoBehaviour {
         SaveLoad.Start();
         new ControlPanel();
         new PlayerCharacter();
+
+        // Touch controls (crappy ios port)
+        TouchControls = Instantiate(Resources.Load("Prefabs/TouchControls"));
+        DontDestroyOnLoad(TouchControls);
+        
         // Load AlMighty globals
-        SaveLoad.LoadAlMighty();
+            SaveLoad.LoadAlMighty();
         LuaScriptBinder.Set(null, "ModFolder", DynValue.NewString("@Title"));
 
         KeyboardInput.LoadPlayerKeys();
@@ -88,9 +93,7 @@ public class GlobalControls : MonoBehaviour {
         // Start Discord RPC (also checks for an AlMightyGlobal within)
         DiscordControls.Start();
 
-        // Touch controls (crappy ios port)
-        TouchControls = Instantiate(Resources.Load("Prefabs/TouchControls"));
-        DontDestroyOnLoad(TouchControls);
+        
 
         awakened = true;
     }
@@ -154,15 +157,15 @@ public class GlobalControls : MonoBehaviour {
         string sceneName = SceneManager.GetActiveScene().name;
 
         // Activate Debugger
-        if (UserDebugger.instance && Input.GetKeyDown(KeyCode.F9) && UserDebugger.instance.canShow) {
+        if (UserDebugger.instance && SimpleInput.GetKeyDown(KeyCode.F9) && UserDebugger.instance.canShow) {
             UserDebugger.instance.gameObject.SetActive(!UserDebugger.instance.gameObject.activeSelf);
             Camera.main.GetComponent<FPSDisplay>().enabled = UserDebugger.instance.gameObject.activeSelf;
         }
         // Activate Hitbox Debugger
-        else if (isInFight && Input.GetKeyDown(KeyCode.H) && sceneName != "Error" && UserDebugger.instance.gameObject.activeSelf)
+        else if (isInFight && SimpleInput.GetKeyDown(KeyCode.H) && sceneName != "Error" && UserDebugger.instance.gameObject.activeSelf)
             gameObject.GetComponent<ProjectileHitboxRenderer>().enabled = !gameObject.GetComponent<ProjectileHitboxRenderer>().enabled;
         // Exit a battle or the Error scene
-        else if (Input.GetKeyDown(KeyCode.Escape) && (canTransOW.Contains(sceneName) || isInFight)) {
+        else if (SimpleInput.GetKeyDown(KeyCode.Escape) && (canTransOW.Contains(sceneName) || isInFight)) {
             if (isInFight && EnemyEncounter.script.GetVar("unescape").Boolean && sceneName != "Error") return;
             // The Error scene can only be exited if we entered the mod through the mod selection screen
             if (sceneName == "Error" && !modDev) {
@@ -185,14 +188,14 @@ public class GlobalControls : MonoBehaviour {
                 StartCoroutine(PlayerOverworld.LaunchMenu());
         }
         // Wipe save and close CYF in the Error scene if save failed to load
-        else if (sceneName == "Error" && allowWipeSave && Input.GetKeyDown(KeyCode.R)) {
+        else if (sceneName == "Error" && allowWipeSave && SimpleInput.GetKeyDown(KeyCode.R)) {
             System.IO.File.Delete(Application.persistentDataPath + "/save.gd");
             Application.Quit();
         }
 
         // Enter fullscreen using given shortcuts
         if (!ScreenResolution.hasInitialized) return;
-        if (Input.GetKeyDown(KeyCode.F4) || (Input.GetKeyDown(KeyCode.Return) && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))) {
+        if (SimpleInput.GetKeyDown(KeyCode.F4) || (SimpleInput.GetKeyDown(KeyCode.Return) && (SimpleInput.GetKey(KeyCode.LeftAlt) || SimpleInput.GetKey(KeyCode.RightAlt)))) {
             ScreenResolution.SetFullScreen(!Screen.fullScreen);
             if (!Screen.fullScreen)
                 StartCoroutine(UpdateMonitorSize());

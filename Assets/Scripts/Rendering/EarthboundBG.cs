@@ -81,11 +81,11 @@ public class EarthboundBG : MonoBehaviour
 
     private void handleControls()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (SimpleInput.GetKeyDown(KeyCode.Q))
             setMode(BGMode.SINE);
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (SimpleInput.GetKeyDown(KeyCode.W))
             setMode(BGMode.INTERLACED_SINE);
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (SimpleInput.GetKeyDown(KeyCode.E))
             setMode(BGMode.VERTICAL_COMPRESSION);
     }
 

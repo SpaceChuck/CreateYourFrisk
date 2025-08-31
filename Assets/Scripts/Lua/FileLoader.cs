@@ -11,11 +11,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public static class FileLoader {
     public static void calcDataRoot() {
-        DirectoryInfo rootInfo = new DirectoryInfo(Application.dataPath);
-
-        // Mac compatibility
-        if (Application.platform == RuntimePlatform.OSXPlayer)
-            rootInfo = rootInfo.Parent;
+        Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "amongus"));
+        DirectoryInfo rootInfo = new DirectoryInfo(Path.Combine(Application.persistentDataPath, "amongus"));
 
         if (rootInfo == null) return;
         string SysDepDataRoot = rootInfo.FullName;

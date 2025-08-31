@@ -278,7 +278,7 @@ public class KeybindSettings : MonoBehaviour {
         if (listening != null) {
             foreach (KeyCode keycode in Enum.GetValues(typeof(KeyCode))) {
                 string key = keycode.ToString();
-                if (Input.GetKeyDown(keycode)) {
+                if (SimpleInput.GetKeyDown(keycode)) {
                     if (keycode == KeyCode.Escape)                                           StopListening();
                     else if (tempKeybinds[listening.Name].Contains(key))                     RemoveKeyFromKeybind(listening, key);
                     else if (keycode != KeyCode.Mouse0 && !key.StartsWith("JoystickButton")) AddKeyToKeybind(listening, key);
@@ -287,7 +287,7 @@ public class KeybindSettings : MonoBehaviour {
 
             foreach (KeyValuePair<string, float> axis in KeyboardInput.axes) {
                 string axisName = null;
-                float state = Input.GetAxis(axis.Key);
+                float state = SimpleInput.GetAxis(axis.Key);
                 if (state >= 0.7f && axis.Value < 0.7f)        axisName = axis.Key + " +";
                 else if (state <= -0.7f && axis.Value > -0.7f) axisName = axis.Key + " -";
 

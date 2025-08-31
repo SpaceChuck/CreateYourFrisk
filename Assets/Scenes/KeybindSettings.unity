@@ -1023,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994334232641bd4ca342c48fcdb1605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WillCreateTouchControls: 0
+  TouchControls: {fileID: 0}
 --- !u!114 &679873567 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6437133863614902638, guid: 5c826c0d5339343438211217ebd3152c,

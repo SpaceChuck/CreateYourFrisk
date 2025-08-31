@@ -333,9 +333,9 @@ public class KeyboardInput : IUndertaleInput {
     /// <param name="c">Key to check the state of.</param>
     /// <returns>state of the key (pressed, held, released, none).</returns>
     private static ButtonState StateFor(KeyCode c) {
-        if (Input.GetKeyDown(c)) return ButtonState.PRESSED;
-        if (Input.GetKeyUp(c))   return ButtonState.RELEASED;
-        return Input.GetKey(c) ? ButtonState.HELD
+        if (SimpleInput.GetKeyDown(c)) return ButtonState.PRESSED;
+        if (SimpleInput.GetKeyUp(c))   return ButtonState.RELEASED;
+        return SimpleInput.GetKey(c) ? ButtonState.HELD
                                : ButtonState.NONE;
     }
 
@@ -393,7 +393,7 @@ public class KeyboardInput : IUndertaleInput {
     public static ButtonState StateForAxis(string axisKey) {
         int state = 0;
         string axisName = axisKey.Substring(0, axisKey.Length - 2);
-        float axisState = Input.GetAxis(axisName);
+        float axisState = SimpleInput.GetAxis(axisName);
         if (axisKey.Substring(axisKey.Length - 1).Equals("+")) {
             if (axes[axisName] >= 0.7f)
                 state -= 1;
@@ -414,6 +414,6 @@ public class KeyboardInput : IUndertaleInput {
     public void LateUpdate() {
         string[] axesNames = axes.Keys.ToArray();
         foreach (string axis in axesNames)
-            axes[axis] = Input.GetAxis(axis);
+            axes[axis] = SimpleInput.GetAxis(axis);
     }
 }
